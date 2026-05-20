@@ -305,7 +305,11 @@ function getWindowTexture(actor) {
 /** Get the RoundedCornersEffect attached to a window actor (or null). */
 function getEffect(actor) {
     const target = targetActor(actor);
-    return target ? target.lastChild.get_effect(ROUNDED_CORNERS_EFFECT) : null;
+    try {
+        return target ? target.lastChild.get_effect(ROUNDED_CORNERS_EFFECT) : null;
+    } catch (e) {
+        return null
+    }
 }
 
 /**
